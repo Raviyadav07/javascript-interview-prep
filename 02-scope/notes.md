@@ -15,7 +15,7 @@ It defines the visibility and accessibility of variables.
 Variables declared outside any function or block.
 
 ```js
-const company = "doodleblue";
+const company = "Company X";
 ```
 
 Accessible everywhere.
@@ -28,7 +28,7 @@ Variables declared inside a function.
 
 ```js
 function project() {
-  const name = "Telesat";
+  const name = "Project X";
 }
 ```
 
@@ -59,10 +59,10 @@ JavaScript uses lexical scoping.
 Example:
 
 ```js
-const company = "doodleblue";
+const company = "Company X";
 
 function outer() {
-  const project = "Telesat";
+  const project = "Project X";
 
   function inner() {
     console.log(company);
@@ -78,8 +78,8 @@ outer();
 Output:
 
 ```js
-doodleblue
-Telesat
+Company X
+Project X
 ```
 
 ---
