@@ -2,8 +2,12 @@ console.log(a);
 
 var a = 10;
 
-sayHello();
+printName();
 
-function sayHello() {
-  console.log("Hello Ravi");
+function printName() {
+  console.log("Ravi");
 }
+
+console.log(b);
+
+let b = 20;

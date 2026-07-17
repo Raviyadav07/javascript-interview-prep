@@ -1,30 +1,53 @@
 # Hoisting
 
-Hoisting is JavaScript's default behavior of moving declarations to the top of their scope before code execution.
+## What is Hoisting?
 
-JavaScript allocates memory during the creation phase before executing the code.
+Hoisting is JavaScript's behavior of moving declarations to the top of their scope before code execution.
 
-## Function Declaration
+During the Memory Creation Phase, JavaScript allocates memory for variables and functions before executing the code.
 
-Function declarations are fully hoisted.
+This is why some variables and functions can be accessed before they appear in the code.
+
+---
+
+## How JavaScript Executes Code
+
+JavaScript executes code in two phases:
+
+### 1. Memory Creation Phase
+
+Memory is allocated for:
+
+- Variables
+- Functions
+
+Example:
 
 ```js
-greet();
+console.log(name);
 
-function greet() {
-  console.log("Hello");
-}
+var name = "Ravi";
 ```
 
-Output:
+Memory Allocation:
 
+```js
+name = undefined
 ```
-Hello
+
+### 2. Code Execution Phase
+
+Line-by-line execution begins.
+
+```js
+console.log(name); // undefined
+
+name = "Ravi";
 ```
 
-## Variable Hoisting
+---
 
-Variables declared using var are hoisted and initialized with undefined.
+## Hoisting with var
 
 ```js
 console.log(name);
@@ -34,13 +57,21 @@ var name = "Ravi";
 
 Output:
 
-```
+```js
 undefined
 ```
 
-## let and const
+Reason:
 
-let and const are hoisted but remain in the Temporal Dead Zone until initialization.
+```js
+var name = undefined;
+```
+
+is internally created during memory allocation.
+
+---
+
+## Hoisting with let
 
 ```js
 console.log(name);
@@ -50,12 +81,92 @@ let name = "Ravi";
 
 Output:
 
-```
+```js
 ReferenceError
 ```
 
+Reason:
+
+let variables remain inside the Temporal Dead Zone until initialization.
+
+---
+
+## Hoisting with const
+
+```js
+console.log(name);
+
+const name = "Ravi";
+```
+
+Output:
+
+```js
+ReferenceError
+```
+
+Reason:
+
+const also stays inside the Temporal Dead Zone.
+
+---
+
+## Function Declaration Hoisting
+
+Functions are fully hoisted.
+
+```js
+greet();
+
+function greet() {
+  console.log("Hello Ravi");
+}
+```
+
+Output:
+
+```js
+Hello Ravi
+```
+
+---
+
+## Function Expression Hoisting
+
+```js
+greet();
+
+var greet = function () {
+  console.log("Hello Ravi");
+};
+```
+
+Output:
+
+```js
+TypeError
+```
+
+Reason:
+
+greet becomes undefined during memory allocation.
+
+---
+
 ## Interview Questions
 
-1. Difference between var, let and const hoisting?
-2. What is Temporal Dead Zone?
-3. Are functions hoisted?
+### What is hoisting?
+
+JavaScript's behavior of allocating memory to variables and functions before code execution.
+
+### Are let and const hoisted?
+
+Yes.
+
+But they remain inside the Temporal Dead Zone.
+
+### Difference between function declaration and function expression?
+
+Function declarations are completely hoisted.
+
+Function expressions behave like normal variables.

@@ -1,14 +1,27 @@
 function createCounter() {
   let count = 0;
 
-  return function () {
-    count++;
-    console.log(`Current Count: ${count}`);
+  return {
+    increment() {
+      count++;
+      console.log(`Count: ${count}`);
+    },
+
+    decrement() {
+      count--;
+      console.log(`Count: ${count}`);
+    },
+
+    getCount() {
+      return count;
+    },
   };
 }
 
 const counter = createCounter();
 
-counter();
-counter();
-counter();
+counter.increment();
+counter.increment();
+counter.decrement();
+
+console.log(counter.getCount());
